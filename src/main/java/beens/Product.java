@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 private static final long serialVersionUID = 1L;
-  private  int prodId;
+  private  int id;
   private  String name;
   private   int price;
 
@@ -16,13 +16,13 @@ private static final long serialVersionUID = 1L;
     }
 
     public Product(int id, String name, int price) {
-        this.prodId = id;
+        this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public int getProdId() {
-        return prodId;
+    public int getId() {
+        return id;
     }
 
     public String getName() {

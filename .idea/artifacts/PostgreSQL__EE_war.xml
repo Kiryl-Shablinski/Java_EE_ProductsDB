@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="PostgreSQL__EE-1.0-SNAPSHOT.war">
+    <root id="archive" name="PostgresSQL__EE-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="PostgreSQL__EE:war exploded" />
     </root>
   </artifact>

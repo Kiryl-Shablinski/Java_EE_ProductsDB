@@ -49,10 +49,6 @@ public class ProductDB {
                   product = new Product(prodId,name,price);
               }
           }
-
-
-
-
         } catch (SQLException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException |
                  InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -60,6 +56,57 @@ public class ProductDB {
 
         return product;
     }
+
+    public int insert(Product product) {
+
+        try(Connection conn = getConnection()) {
+            try(PreparedStatement preparedStatement = conn.prepareStatement
+                    ("INSERT INTO products (name, price) VALUES (?, ?)")){
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setInt(2,product.getPrice());
+
+                return preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException |
+                 IllegalAccessException | InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int update(Product product) {
+        try(Connection conn = getConnection()) {
+            try(PreparedStatement preparedStatement = conn.prepareStatement
+                    ("UPDATE products SET name = ?, price = ? WHERE id = ?")){
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setInt(2,product.getPrice());
+                preparedStatement.setInt(3, product.getId());
+
+                return preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException |
+                 IllegalAccessException | InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int delete(Product product) {
+        try(Connection conn = getConnection()) {
+            try(PreparedStatement preparedStatement = conn.prepareStatement
+                    ("DELETE FROM products WHERE id = ?")){
+                preparedStatement.setInt(1, product.getId());
+
+                return preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException |
+                 IllegalAccessException | InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     private static Connection getConnection() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
         Class.forName("com.postgresql.jdbc.Driver").getDeclaredConstructor().newInstance();
