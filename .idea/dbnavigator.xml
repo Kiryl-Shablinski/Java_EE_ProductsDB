@@ -44,7 +44,7 @@
           <database value="Products" />
           <type value="USER_PASSWORD" />
           <user value="Kiryl" />
-          <deprecated-pwd value="MTIzNDQzMg==" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />

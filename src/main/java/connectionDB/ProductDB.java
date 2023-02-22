@@ -57,7 +57,7 @@ public class ProductDB {
         return product;
     }
 
-    public int insert(Product product) {
+    public static int insert(Product product) {
 
         try(Connection conn = getConnection()) {
             try(PreparedStatement preparedStatement = conn.prepareStatement
@@ -74,7 +74,7 @@ public class ProductDB {
         }
     }
 
-    public int update(Product product) {
+    public static int update(Product product) {
         try(Connection conn = getConnection()) {
             try(PreparedStatement preparedStatement = conn.prepareStatement
                     ("UPDATE products SET name = ?, price = ? WHERE id = ?")){
@@ -91,7 +91,7 @@ public class ProductDB {
         }
     }
 
-    public int delete(Product product) {
+    public static int delete(Product product) {
         try(Connection conn = getConnection()) {
             try(PreparedStatement preparedStatement = conn.prepareStatement
                     ("DELETE FROM products WHERE id = ?")){

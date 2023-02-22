@@ -1,4 +1,4 @@
-package com.example.postgresql__ee;
+package Servlets;
 
 import beens.Product;
 import connectionDB.ProductDB;
